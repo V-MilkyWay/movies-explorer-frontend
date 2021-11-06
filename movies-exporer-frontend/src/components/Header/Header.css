@@ -1,0 +1,143 @@
+.header {
+    margin: 0;
+    display: grid;
+    align-items: center;
+    grid-template-areas: "logo linkMovies linkSavedMovies linkProfile navTab";
+}
+
+.header__logo {
+    margin: 0;
+    display: flex;
+    margin-right: 710px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    grid-area: logo;
+    height: 38px;
+    width: 38px;
+    border-radius: 0px;
+    background: url('../../images/header-logo-main.svg');
+}
+
+.header__logo:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+.header__link {
+    margin: 0;
+    margin-right: 20px;
+    display: flex;
+    grid-area: linkMovies;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: right;
+    letter-spacing: 0em;
+    color: rgba(0, 0, 0, 1);
+    height: 18px;
+    width: 58px;
+}
+
+.header__link:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+.header__link:nth-child(3) {
+    grid-area: linkSavedMovies;
+    margin-right: 50px;
+    font-style: normal;
+    font-weight: 400;
+    width: 153px;
+}
+
+.header__link_profile {
+    align-items: center;
+    padding-left: 11px;
+    grid-area: linkProfile;
+    font-size: 13px;
+    line-height: 12px;
+    height: 32px;
+    width: 89px;
+    background-image: url('../../images/button-profile.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 40px;
+    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+    color: rgba(34, 34, 34, 1);
+}
+
+.header__button {
+    margin: 0;
+    display: flex;
+    cursor: pointer;
+    margin-left: auto;
+    grid-area: navTab;
+    height: 44px;
+    width: 44px;
+    border: none;
+    background: none;
+    background-image: url('../../images/button-nav.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header__button:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+.header__button_hidden {
+    display: none;
+}
+
+@media screen and (min-width: 1280px) {
+    .header {
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+    .header__logo {
+        margin-right: 710px;
+    }
+    .header__link {
+        display: flex;
+    }
+    .header__button {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .header {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .header__logo {
+        margin-right: 623px;
+    }
+    .header__link {
+        display: none;
+    }
+    .header__button {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .header {
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+    .header__logo {
+        margin-right: 207px;
+    }
+    .header__link {
+        display: none;
+    }
+    .header__button {
+        display: flex;
+    }
+  }

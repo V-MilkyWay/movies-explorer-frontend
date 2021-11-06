@@ -1,0 +1,136 @@
+.navigation {
+    margin: 0;
+    grid-template-areas: " . links";
+    margin: 0 auto;
+    position: fixed;
+    width: 768px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+.navigation_hidden {
+    display: none;
+}
+
+.nav-links {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    width: 520px;
+    justify-self: end;
+    flex-flow: column;
+    grid-area: links;
+    background: rgba(255, 255, 255, 1);
+}
+
+.nav-links__link {
+    margin: 0;
+    margin-bottom: 28px;
+    text-decoration: none;
+    display: flex;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+}
+
+.nav-links__link:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+.nav-links__link_actual {
+    padding-bottom: 7px;
+    margin-bottom: 19px;
+    border-bottom: 2px solid rgba(0, 0, 0, 1);
+}
+
+.nav-links_profile {
+    align-items: center;
+    padding-left: 11px;
+    grid-area: linkProfile;
+    font-size: 13px;
+    line-height: 12px;
+    height: 32px;
+    width: 89px;
+    margin-top: auto;
+    margin-bottom: 90px;
+    background-image: url('../../images/button-profile.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 40px;
+    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+    color: rgba(34, 34, 34, 1);
+}
+
+.nav-links_profile:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+.nav-links__close-button {
+    margin: 0;
+    margin-top: 22px;
+    margin-right: 22px;
+    margin-bottom: 105px;
+    display: flex;
+    cursor: pointer;
+    align-self: end;
+    width: 22px;
+    height: 22px;
+    background: none;
+    border: none;
+    background: url('../../images/Nav-exit.svg');
+    background-position: center;
+}
+
+.nav-links__close-button:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+@media screen and (min-width: 1280px) {
+    .navigation {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .navigation {
+        display: grid;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .navigation {
+        display: grid;
+        grid-template-areas: "links";
+        margin: 0 auto;
+        position: fixed;
+        width: 320px;
+        height: 780px;
+        z-index: 3;
+    }
+    .nav-links {
+        width: 320px;
+        justify-self: center;
+    }
+    .nav-links__link {
+        margin-bottom: 24px;
+    }
+    .nav-links_profile {
+        font-size: 14px;
+        line-height: 16px;
+        height: 32px;
+        width: 100px;
+        margin-bottom: 46px;
+    }
+    .nav-links__link_actual {
+        margin-bottom: 15px;
+    }
+}

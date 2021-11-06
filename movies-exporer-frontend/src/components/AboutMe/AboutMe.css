@@ -1,0 +1,202 @@
+.aboutMe {
+    margin: 0;
+    display: grid;
+    grid-template-areas: "title title title" "name name avatar" "info info avatar" "text text avatar" "link link2 avatar";
+}
+
+.aboutMe__title {
+    display: flex;
+    margin: 0;
+    margin-bottom: 66px;
+    padding-bottom: 23px;
+    grid-area: title;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.aboutMe__name {
+    display: flex;
+    margin: 0;
+    margin-bottom: 18px;
+    grid-area: name;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    text-align: left;
+}
+
+.aboutMe__info {
+    display: flex;
+    margin: 0;
+    grid-area: info;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.aboutMe__text {
+    display: flex;
+    margin: 0;
+    grid-area: text;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.aboutMe__link {
+    display: flex;
+    margin: 0;
+    width: min-content;
+    grid-area: link;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+}
+
+.aboutMe__link:nth-child(6) {
+    grid-area: link2;
+}
+
+.aboutMe__avatar {
+    display: flex;
+    margin: 0;
+    margin-right: -12px;
+    grid-area: avatar;
+    height: 327px;
+    width: 270px;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 1280px) {
+    .aboutMe {
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+    .aboutMe__title {
+        margin-top: 110px;
+    }
+    .aboutMe__name {
+        margin-bottom: 18px;
+        font-size: 50px;
+        line-height: 58px;
+    }
+    .aboutMe__info {
+        margin-bottom: 26px;
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .aboutMe__text {
+        margin-bottom: 99px;
+        width: 600px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .aboutMe__link {
+        margin-bottom: 100px;
+    }
+    .aboutMe__link:nth-child(6) {
+        margin-right: 730px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .aboutMe {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .aboutMe__title {
+        margin-top: 90px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .aboutMe__name {
+        margin-bottom: 16px;
+        font-size: 40px;
+        line-height: 40px;
+    }
+    .aboutMe__info {
+        margin-bottom: 20px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .aboutMe__text {
+        margin-bottom: 87px;
+        width: 364px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .aboutMe__link {
+        margin-bottom: 90px;
+    }
+    .aboutMe__link:nth-child(6) {
+        margin-right: 260px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .aboutMe {
+        margin-left: 14px;
+        margin-right: 14px;
+        grid-template-areas: 
+        "title title"
+        "avatar avatar"
+        "name name"
+        "info info"
+        "text text"
+        "link link2";
+    }
+    .aboutMe__title {
+        margin-top: 70px;
+        width: 291px;
+        margin-bottom: 60px;
+    }
+    .aboutMe__avatar {
+        height: 352px;
+        width: 292px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+    }
+    .aboutMe__name {
+        margin-bottom: 20px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .aboutMe__info {
+        margin-bottom: 20px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+    .aboutMe__text {
+        margin-bottom: 40px;
+        width: 292px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .aboutMe__link {
+        margin-bottom: 69px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .aboutMe__link:nth-child(6) {
+        margin-right: 151px;
+    }
+}

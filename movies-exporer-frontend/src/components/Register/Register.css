@@ -1,0 +1,212 @@
+.register {
+    margin: 0;
+    margin-bottom: 70px;
+    display: grid;
+    align-self: center;
+    width: 396px;
+    align-items: center;
+    grid-template-areas: "logo logo" "welcome welcome" "title-name title-name" "name name" "title-email title-email" "email email" "title-password title-password" "password password" "error error" "button button" "text link";
+}
+
+.register__logo {
+    margin: 0;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    grid-area: logo;
+}
+
+.register__welcome {
+    margin: 0;
+    margin-bottom: 40px;
+    grid-area: welcome;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.register__title {
+    margin: 0;
+    margin-bottom: 10px;
+    grid-area: title-name;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(160, 160, 160, 1);
+}
+
+.register__title:nth-child(5) {
+    grid-area: title-email;
+}
+
+.register__title:nth-child(7) {
+    grid-area: title-password;
+}
+
+.register__input {
+    margin: 0;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    grid-area: name;
+    height: 46px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(249, 249, 249, 1);
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.register__input:nth-child(6) {
+    grid-area: email;
+}
+
+.register__input:nth-child(8) {
+    grid-area: password;
+    margin-bottom: 10px;
+    color: rgba(255, 48, 85, 1);
+}
+
+.register__input-error {
+    margin: 0;
+    grid-area: error;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(255, 48, 85, 1);
+}
+
+.register__button-login {
+    margin: 0;
+    margin-bottom: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: button;
+    height: 45px;
+    border: none;
+    border-radius: 3px;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    background: rgba(52, 86, 243, 1);
+}
+
+.register__button-login:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+.register__text {
+    margin: 0;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 6px;
+    grid-area: text;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(160, 160, 160, 1);
+}
+
+.register__link {
+    margin: 0;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: none;
+    grid-area: link;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(52, 86, 243, 1);
+}
+
+.register__link:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+@media screen and (min-width: 1280px) {
+    .register {
+        margin-bottom: 70px;
+    }
+    .register__logo {
+        margin-top: 70px;
+    }
+    .register__input-error {
+        margin-bottom: 59px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .register {
+        margin-bottom: 227px;
+    }
+    .register__logo {
+        margin-top: 227px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .register {
+        margin-bottom: 30px;
+        width: 260px;
+    }
+    .register__logo {
+        justify-self: center;
+        margin-top: 56px;
+        margin-bottom: 50px;
+    }
+    .register__welcome {
+        justify-self: center;
+        margin-bottom: 80px;
+    }
+    .register__input-error {
+        margin-bottom: 153px;
+        font-size: 10px;
+        line-height: 12px;
+    }
+    .register__button-login {
+        margin-bottom: 14px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .register__text {
+        margin-right: 7px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .register__link {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
