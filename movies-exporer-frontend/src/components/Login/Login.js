@@ -23,7 +23,7 @@ function Login() {
             <p className="login__title">Пароль</p>
             <input id="password-input" value={input.password} onChange={handleChange} name="password" type="password" className="login__input" placeholder="Пароль" required minLength="2" maxLength="200" />
             <span className="login__input-error"></span>
-            <button type="submit" className="login__button-login">Зарегистрироваться</button>
+            <button type="submit" className="login__button-login">Войти</button>
             <p className="login__text">Ещё не зарегистрированы?</p>
             <Link className="login__link" to="/signup">Регистрация</Link>
         </form>
