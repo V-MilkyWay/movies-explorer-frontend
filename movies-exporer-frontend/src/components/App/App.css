@@ -1,0 +1,25 @@
+.App {
+  margin: auto;
+  display: flex;
+  position: fit;
+  flex-flow: column;
+  background-color: white;
+}
+
+@media screen and (min-width: 1280px) {
+  .App {
+    width: 1280px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .App {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .App {
+    width: 320px;
+  }
+}

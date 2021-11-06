@@ -1,0 +1,92 @@
+.headerPromo {
+    margin: 0;
+    display: flex;
+    align-content: center;
+    background: rgb(7, 48, 66);
+}
+
+.headerPromo__logo {
+    margin: 0;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.headerPromo__link-signup {
+    margin: 0;
+    margin-left: auto;
+    align-self: center;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.headerPromo__link-signup:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+.headerPromo__link-signin {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    background: rgba(43, 224, 128, 1);
+    color: rgba(0, 0, 0, 1);
+    align-self: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    width: 76px;
+    height: 32px;
+    border-radius: 3px;
+}
+
+.headerPromo__link-signin:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
+}
+
+@media screen and (min-width: 1280px) {
+    .headerPromo__logo {
+        margin-left: 60px;
+    }
+    .headerPromo__link-signin {
+        margin-right: 70px;
+        margin-left: 30px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .headerPromo__logo {
+        margin-left: 30px;
+    }
+    .headerPromo__link-signin {
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .headerPromo__logo {
+        margin-left: 14px;
+    }
+    .headerPromo__link-signin {
+        margin-right: 14px;
+        margin-left: 14px;
+        width: 54px;
+        height: 26px;
+        font-size: 10px;
+    }
+    .headerPromo__link-signup {
+        font-size: 10px;
+    }
+}
