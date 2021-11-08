@@ -6,6 +6,7 @@
     width: 396px;
     align-items: center;
     grid-template-areas: "logo logo" "welcome welcome" "title-name title-name" "name name" "title-email title-email" "email email" "title-password title-password" "password password" "error error" "button button" "text link";
+    color: rgba(255, 255, 255, 1);
 }
 
 .register__logo {
@@ -30,7 +31,7 @@
 
 .register__title {
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     grid-area: title-name;
     font-family: Inter;
     font-size: 10px;
@@ -52,20 +53,27 @@
 
 .register__input {
     margin: 0;
-    margin-bottom: 20px;
-    padding-left: 15px;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
     grid-area: name;
-    height: 46px;
     border: none;
-    border-radius: 8px;
-    background: rgba(249, 249, 249, 1);
+    background: none;
     font-family: Inter;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 17px;
     letter-spacing: 0em;
     text-align: left;
+    color: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid rgba(66, 66, 66, 1);
+}
+
+.register__input:focus-visible {
+    border-bottom: 1px solid rgba(66, 133, 244, 1);
+}
+.register__input:focus {
+    outline: none;
 }
 
 .register__input:nth-child(6) {
@@ -82,10 +90,10 @@
     margin: 0;
     grid-area: error;
     font-family: Inter;
-    font-size: 13px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 12px;
     letter-spacing: 0em;
     text-align: left;
     color: rgba(255, 48, 85, 1);
@@ -110,7 +118,7 @@
     letter-spacing: 0em;
     text-align: center;
     color: rgba(255, 255, 255, 1);
-    background: rgba(52, 86, 243, 1);
+    background: rgba(66, 133, 244, 1);
 }
 
 .register__button-login:hover {
@@ -147,7 +155,7 @@
     line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
-    color: rgba(52, 86, 243, 1);
+    color: rgba(66, 133, 244, 1);
 }
 
 .register__link:hover {
@@ -163,16 +171,19 @@
         margin-top: 70px;
     }
     .register__input-error {
-        margin-bottom: 59px;
+        margin-bottom: 127px;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
+    .register__input-error {
+        margin-bottom: 123px;
+    }
     .register {
-        margin-bottom: 227px;
+        margin-bottom: 243px;
     }
     .register__logo {
-        margin-top: 227px;
+        margin-top: 225px;
     }
 }
 
@@ -191,7 +202,7 @@
         margin-bottom: 80px;
     }
     .register__input-error {
-        margin-bottom: 153px;
+        margin-bottom: 215px;
         font-size: 10px;
         line-height: 12px;
     }

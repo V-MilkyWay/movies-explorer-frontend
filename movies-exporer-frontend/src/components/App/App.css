@@ -3,7 +3,7 @@
   display: flex;
   position: fit;
   flex-flow: column;
-  background-color: white;
+  background: rgba(32, 32, 32, 1);
 }
 
 @media screen and (min-width: 1280px) {

@@ -3,6 +3,7 @@
     margin-bottom: 20px;
     display: grid;
     grid-template-areas: "title title title title" "copyrigh link1 link2 link3";
+    color: rgba(255, 255, 255, 1);
 }
 
 .footer__title {
@@ -21,8 +22,8 @@
     line-height: 16px;
     letter-spacing: 0px;
     text-align: center;
-    color: rgba(160, 160, 160, 1);
-    border-bottom: 1px solid rgba(232, 232, 232, 1);
+    color: rgba(139, 139, 139, 1);
+    border-bottom: 1px solid rgba(66, 66, 66, 1);
 }
 
 .footer__copyrigh {
@@ -47,7 +48,7 @@
     line-height: 16px;
     letter-spacing: 0px;
     text-align: right;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
     text-decoration: none;
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoMain from '../../images/header_logo1.svg';
+import logoMain from '../../images/header-logo.svg';
 import './HeaderPromo.css';
 
 function HeaderPromo() {

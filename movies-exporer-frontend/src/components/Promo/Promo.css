@@ -4,7 +4,7 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
-    background: rgb(7, 48, 66);
+    background: rgba(7, 48, 66, 1);
 }
 
 .promo__logo {
