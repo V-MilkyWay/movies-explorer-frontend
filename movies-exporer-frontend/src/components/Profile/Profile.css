@@ -47,6 +47,13 @@
     color: rgba(232, 232, 232, 1);
 }
 
+.profile__text:focus-visible {
+    border-bottom: 1px solid rgba(66, 133, 244, 1);
+}
+.profile__text:focus {
+    outline: none;
+}
+
 .profile__text:nth-child(3) {
     grid-area: actualName;
     font-weight: 400;
