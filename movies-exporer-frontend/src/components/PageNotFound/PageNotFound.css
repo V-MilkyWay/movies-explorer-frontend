@@ -5,6 +5,7 @@
     width: 400px;
     justify-items: center;
     grid-template-areas: "title" "text" "link";
+    color: rgba(255, 255, 255, 1);
 }
 
 .not-found__title {
@@ -45,7 +46,7 @@
     line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
-    color: rgba(52, 86, 243, 1);
+    color: rgba(66, 133, 244, 1);
 }
 
 .not-found__link:hover {
@@ -82,8 +83,8 @@
         line-height: 97px;
     }
     .not-found__link {
-        margin-top: 284px;
-        margin-bottom: 20px;
+        margin-top: 289px;
+        margin-bottom: 30px;
         font-family: Inter;
         font-size: 12px;
         line-height: 15px;

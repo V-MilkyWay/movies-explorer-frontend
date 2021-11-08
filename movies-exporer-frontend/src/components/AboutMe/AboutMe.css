@@ -2,6 +2,7 @@
     margin: 0;
     display: grid;
     grid-template-areas: "title title title" "name name avatar" "info info avatar" "text text avatar" "link link2 avatar";
+    color: rgba(255, 255, 255, 1);
 }
 
 .aboutMe__title {
@@ -17,7 +18,7 @@
     line-height: 27px;
     letter-spacing: -0.04em;
     text-align: left;
-    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    border-bottom: 1px solid rgba(218, 218, 218, 1);
 }
 
 .aboutMe__name {
@@ -69,7 +70,7 @@
     letter-spacing: 0em;
     text-align: left;
     text-decoration: none;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
 }
 
 .aboutMe__link:nth-child(6) {

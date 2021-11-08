@@ -1,7 +1,6 @@
 .filterCheckbox {
     display: flex;
     grid-area: filter;
-    margin-right: auto;
     width: fit-content;
     height: fit-content;
     align-self: center;
@@ -18,9 +17,10 @@
     cursor: pointer;
     height: 20px;
     width: 36px;
-    background-color: rgba(235, 235, 235, 1);
+    background-color: rgb(36, 35, 35);
     transition: .4s;
-    border-radius: 20px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08)
 }
 
 .filterCheckbox__slider:before {
@@ -31,15 +31,35 @@
     width: 16px;
     left: 2px;
     bottom: 2px;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(61, 220, 132, 1);
     transition: .4s;
     border-radius: 50%;
 }
 
 .filterCheckbox__input:checked+.filterCheckbox__slider {
-    background: rgba(43, 224, 128, 1);
+    background: rgba(32, 32, 32, 1);
 }
 
 .filterCheckbox__input:checked+.filterCheckbox__slider:before {
     transform: translateX(16px);
+}
+
+@media screen and (min-width: 1280px) {
+    .filterCheckbox {
+        margin-left: 29px;
+        margin-right: 14px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .filterCheckbox {
+        margin-left: 35px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .filterCheckbox {
+        margin-left: auto;
+        margin-right: 19px;
+    }
 }

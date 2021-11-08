@@ -2,6 +2,7 @@
     margin: 0;
     display: grid;
     grid-template-areas: "title title" "heading1 heading2" "text1 text2" "prog-bar1 prog-bar2" "prog-title1 prog-title2";
+    color: rgba(255, 255, 255, 1);
 }
 
 .aboutProject__title {
@@ -17,7 +18,7 @@
     line-height: 27px;
     letter-spacing: -0.04em;
     text-align: left;
-    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    border-bottom: 1px solid rgba(218, 218, 218, 1);
 }
 
 .aboutProject__heading {
@@ -62,11 +63,13 @@
     font-weight: 400;
     line-height: 17px;
     letter-spacing: 0em;
+    color: rgba(0, 0, 0, 1);
 }
 
 .aboutProject__progress-bar:nth-child(7) {
     grid-area: prog-bar2;
-    background: rgba(242, 242, 242, 1);
+    background: rgba(48, 48, 48, 1);
+    color: rgba(255, 255, 255, 1);
     width: auto;
 }
 
@@ -83,7 +86,7 @@
     font-weight: 500;
     line-height: 17px;
     letter-spacing: 0px;
-    color: rgba(160, 160, 160, 1);
+    color: rgba(139, 139, 139, 1);
 }
 
 .aboutProject__progress-title:nth-child(9) {

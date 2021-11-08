@@ -3,15 +3,19 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-areas: "video video" "name button" "line line" "duration duration";
-    margin-bottom: 10px;
+    grid-template-areas: "name duration" "video video" "button button";
+    background: rgba(34, 34, 34, 1);
+    height: 319px;
+    width: 360px;
+    border-radius: 6px;
 }
 
 .moviesCard__video {
     cursor: pointer;
     margin: 0;
+    margin-top: 18px;
+    margin-bottom: 18px;
     grid-area: video;
-    margin-bottom: 14px;
 }
 
 .moviesCard__video:hover {
@@ -21,38 +25,48 @@
 
 .moviesCard__name {
     margin: 0;
+    margin-top: 18px;
+    margin-left: 18px;
     grid-area: name;
     font-family: Inter;
-    font-size: 13px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
-    line-height: 16px;
+    line-height: 18px;
     letter-spacing: 0px;
     text-align: left;
+    color: rgba(255, 255, 255, 1);
 }
 
 .moviesCard__like {
+    display: flex;
     margin: 0;
-    margin-left: auto;
+    margin-bottom: 18px;
+    justify-self: center;
     grid-area: button;
+    width: 100px;
+    height: 29px;
     cursor: pointer;
-    height: 24px;
-    width: 24px;
     border: none;
     border-radius: 36px;
+    background: rgba(49, 49, 49, 1);
     background-image: url('../../images/like.svg');
-    background-position: center;
+    background-position: bottom;
 }
 
 .moviesCard__like:hover {
+    background: rgba(238, 52, 101, 1);
     background-image: url('../../images/like-active.svg');
 }
+
 .moviesCard__like:active {
     transform: scale(5);
     transition: 3s;
     background-image: url('../../images/like-active.svg');
 }
+
 .moviesCard__like_active {
+    background: rgba(238, 52, 101, 1);
     background-image: url('../../images/like-active.svg');
 }
 
@@ -62,13 +76,15 @@
 
 .moviesCard__delete {
     margin: 0;
-    margin-left: auto;
+    margin-bottom: 18px;
+    justify-self: center;
     grid-area: button;
     cursor: pointer;
-    height: 24px;
-    width: 24px;
-    border: none;
+    width: 100px;
+    height: 29px;
     border-radius: 36px;
+    border: none;
+    background: rgba(49, 49, 49, 1);
     background-image: url('../../images/delete.svg');
     background-position: center;
 }
@@ -78,26 +94,15 @@
     transition: linear 0.5s;
 }
 
-.moviesCard:hover .moviesCard__delete {
-    background-image: url('../../images/delete-active.svg');
-}
-
 .moviesCard__delete_hidden {
     display: none;
 }
 
-.moviesCard__line {
-    margin: 0;
-    margin-bottom: 6px;
-    grid-area: line;
-    border: none;
-    height: 1px;
-    background: rgba(232, 232, 232, 1);
-    color: rgba(232, 232, 232, 1);
-}
-
 .moviesCard__duration {
     margin: 0;
+    margin-top: 18px;
+    margin-left: auto;
+    margin-right: 18px;
     grid-area: duration;
     font-family: Inter;
     font-size: 11px;
@@ -110,39 +115,52 @@
 }
 
 @media screen and (min-width: 1280px) {
-    .moviesCard__line {
-        margin-top: 25px;
-        width: 270px;
+    .moviesCard {
+        height: 319px;
+        width: 360px;
     }
     .moviesCard__video {
-        width: 270;
+        height: 200px;
+        width: 360px;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .moviesCard__line {
-        margin-top: 29px;
-        width: 339px;
+    .moviesCard {
+        height: 309px;
+        width: 342px;
     }
     .moviesCard__video {
-        width: 339px;
+        width: 342px;
     }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-    .moviesCard__line {
-        margin-top: 29px;
+    .moviesCard {
+        height: 271px;
         width: 300px;
     }
     .moviesCard__video {
         width: 300px;
+        margin-top: 14px;
+        margin-bottom: 14px;
     }
     .moviesCard__name {
+        margin-top: 14px;
+        margin-left: 14px;
         font-size: 12px;
-        line-height: 15px;
+        line-height: 18px;
     }
     .moviesCard__duration {
+        margin-top: 14px;
+        margin-right: 14px;
         font-size: 10px;
-        line-height: 12px;
+        line-height: 18px;
+    }
+    .moviesCard__like {
+        margin-bottom: 14px;
+    }
+    .moviesCard__delete {
+        margin-bottom: 14px;
     }
 }

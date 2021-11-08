@@ -5,6 +5,7 @@
     width: 396px;
     align-items: center;
     grid-template-areas: "logo logo" "welcome welcome" "title-name title-name" "name name" "title-email title-email" "email email" "title-password title-password" "password password" "error error" "button button" "text link";
+    color: rgba(255, 255, 255, 1);
 }
 
 .login__logo {
@@ -28,7 +29,7 @@
 
 .login__title {
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     grid-area: title-name;
     font-family: Inter;
     font-size: 10px;
@@ -37,7 +38,7 @@
     line-height: 12px;
     letter-spacing: 0em;
     text-align: left;
-    color: rgba(160, 160, 160, 1);
+    color: rgba(139, 139, 139, 1);
 }
 
 .login__title:nth-child(5) {
@@ -46,20 +47,26 @@
 
 .login__input {
     margin: 0;
-    margin-bottom: 20px;
-    padding-left: 15px;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
     grid-area: name;
-    height: 46px;
     border: none;
-    border-radius: 8px;
-    background: rgba(249, 249, 249, 1);
+    background: none;
+    border-bottom: 1px solid rgba(66, 66, 66, 1);
     font-family: Inter;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 17px;
     letter-spacing: 0em;
     text-align: left;
+    color: rgba(255, 255, 255, 1);
+}
+.login__input:focus-visible {
+    border-bottom: 1px solid rgba(66, 133, 244, 1);
+}
+.login__input:focus {
+    outline: none;
 }
 
 .login__input:nth-child(6) {
@@ -99,7 +106,7 @@
     letter-spacing: 0em;
     text-align: center;
     color: rgba(255, 255, 255, 1);
-    background: rgba(52, 86, 243, 1);
+    background: rgba(66, 133, 244, 1);
 }
 
 .login__button-login:hover {
@@ -136,7 +143,7 @@
     line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
-    color: rgba(52, 86, 243, 1);
+    color: rgba(66, 133, 244, 1);
 }
 
 .login__link:hover {
@@ -152,19 +159,19 @@
         margin-top: 70px;
     }
     .login__input-error {
-        margin-bottom: 69px;
+        margin-bottom: 209px;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
     .login {
-        margin-bottom: 226px;
+        margin-bottom: 254px;
     }
     .login__logo {
-        margin-top: 228px;
+        margin-top: 234px;
     }
     .login__input-error {
-        margin-bottom: 175px;
+        margin-bottom: 185px;
     }
 }
 
@@ -183,7 +190,7 @@
         margin-bottom: 80px;
     }
     .login__input-error {
-        margin-bottom: 250px;
+        margin-bottom: 297px;
         font-size: 10px;
         line-height: 12px;
     }
