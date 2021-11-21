@@ -42,7 +42,7 @@ function App() {
   let num = numCards;
 
   const updateSavedCardList = React.useCallback(() => {
-  setDeleted(deleted);
+
     let result = getLocalStorage().map(card => getLocalStorageLikedCards().find(({ movieId }) => movieId === card.id.toString()) || card);
     return result
   }, [deleted]);
@@ -390,23 +390,27 @@ function App() {
             handleClickFilterCheckbox={handleClickFilterCheckbox} />
           <ProtectedRoute
             path="/saved-movies"
+            status={'saved-movies'}
             filter={filter}
             statMovies={statMovies}
             loggedIn={loggedIn}
             likedCards={likedCards}
             component={SavedMovies}
             setFiltText={setFiltText}
+            handleClickCloseNavTab={closeNav}
             searchSavedCards={searchSavedCards}
             handleClickDeleteMovie={handleClickDeleteLikedMovie}
             handleClickFilterCheckbox={handleClickFilterCheckbox} />
           <ProtectedRoute
             path="/profile"
+            status={'profile'}
             loggedIn={loggedIn}
             isRedact={redactProfile}
             statServer={statErrProfile}
             signOut={signOut}
             component={Profile}
             onRedactClick={handleRedactClick}
+            handleClickCloseNavTab={closeNav}
             handleUpdateUser={handleUpdateUser} />
           <Route path="*">
             <PageNotFound />
