@@ -47,6 +47,13 @@
     color: rgba(232, 232, 232, 1);
 }
 
+.profile__text:focus-visible {
+    border-bottom: 1px solid rgba(66, 133, 244, 1);
+}
+.profile__text:focus {
+    outline: none;
+}
+
 .profile__text:nth-child(3) {
     grid-area: actualName;
     font-weight: 400;
@@ -75,6 +82,15 @@
     grid-area: actualEmail;
     font-weight: 400;
     text-align: right;
+}
+.profile__text_error {
+    color: rgba(255, 48, 85, 1);
+}
+.profile__text_error:nth-child(4) {
+    color: rgba(255, 48, 85, 1);
+}
+.profile__text_error:nth-child(8) {
+    color: rgba(255, 48, 85, 1);
 }
 
 .profile__text_hidden {
@@ -168,8 +184,8 @@
 
 .profile__save_unactive {
     cursor: auto;
-    background: rgba(248, 248, 248, 1);
-    color: rgba(194, 194, 194, 1);
+    color: rgb(177, 166, 166);
+    background: rgb(84, 84, 85);
 }
 
 .profile__save_unactive:hover {

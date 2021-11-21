@@ -2,10 +2,10 @@ import React from 'react';
 import './FilterCheckbox.css';
 
 
-function FilterCheckbox() {
+function FilterCheckbox(props) {
     return (
         <label className="filterCheckbox">
-                <input className="filterCheckbox__input" type="checkbox" />
+                <input onChange={props.handleClickFilterCheckbox} checked={props.filter} className="filterCheckbox__input" type="checkbox" />
                 <span className="filterCheckbox__slider"></span>
         </label>
     )
