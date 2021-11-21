@@ -38,7 +38,7 @@ function Profile(props) {
 
     return (
         <>
-        <Navigation />
+        <Navigation handleClickCloseNavTab={props.handleClickCloseNavTab} status={props.status} />
         <Header />
         <form className="profile">
             <h2 className="profile__title">Привет, {currentUser.name}!</h2>

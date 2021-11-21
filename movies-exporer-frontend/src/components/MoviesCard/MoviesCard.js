@@ -17,7 +17,7 @@ function MoviesCard(props) {
                 nameEN: props.nameEN,
                 director: props.director,
                 thumbnail: props.link,
-                country: props.country,
+                country: props.country.toString(),
                 year: props.year.toString(),
                 duration: props.duration.toString(),
                 description: props.description,
