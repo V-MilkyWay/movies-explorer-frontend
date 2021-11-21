@@ -83,6 +83,15 @@
 .register__input:nth-child(8) {
     grid-area: password;
     margin-bottom: 10px;
+}
+
+.register__input_error {
+    color: rgba(255, 48, 85, 1);
+}
+.register__input_error:nth-child(6) {
+    color: rgba(255, 48, 85, 1);
+}
+.register__input_error:nth-child(8) {
     color: rgba(255, 48, 85, 1);
 }
 
@@ -124,6 +133,17 @@
 .register__button-login:hover {
     opacity: 0.5;
     transition: linear 0.5s;
+}
+
+.register__button-login_unactive {
+    cursor:unset;
+    color: rgb(177, 166, 166);
+    background: rgb(84, 84, 85);
+}
+
+.register__button-login_unactive:hover {
+    opacity: 1;
+    transition: none;
 }
 
 .register__text {

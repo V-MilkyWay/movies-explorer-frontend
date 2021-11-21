@@ -4,16 +4,10 @@ import { Link } from 'react-router-dom';
 
 function Navigation(props) {
 
-    const [status, setStatus] = React.useState(true);
-
-    function closeNavTab() {
-        setStatus(false);
-    }
-
     return (
-        <div className={!status ? "navigation_hidden": "navigation" }>
+        <div className={props.isOpen === false ? "navigation_hidden" : "navigation"}>
             <div className="nav-links">
-                <button type="button" onClick={closeNavTab} className="nav-links__close-button"></button>
+                <button type="button" onClick={props.handleClickCloseNavTab} className="nav-links__close-button"></button>
                 <Link className={props.status === 'main' ? "nav-links__link nav-links__link_actual" : "nav-links__link"} to="/">
                     Главная
                 </Link>

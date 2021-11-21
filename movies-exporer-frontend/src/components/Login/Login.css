@@ -74,6 +74,13 @@
     margin-bottom: 10px;
 }
 
+.login__input_error {
+    color: rgba(255, 48, 85, 1);
+}
+.login__input_error:nth-child(5) {
+    color: rgba(255, 48, 85, 1);
+}
+
 .login__input-error {
     margin: 0;
     grid-area: error;
@@ -112,6 +119,17 @@
 .login__button-login:hover {
     opacity: 0.5;
     transition: linear 0.5s;
+}
+
+.login__button-login_unactive {
+    cursor:unset;
+    color: rgb(177, 166, 166);
+    background: rgb(84, 84, 85);
+}
+
+.login__button-login_unactive:hover {
+    opacity: 1;
+    transition: none;
 }
 
 .login__text {

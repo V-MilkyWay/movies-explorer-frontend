@@ -95,3 +95,5 @@ export const savedMovies = [
         poster: example
     },
 ];
+
+export const mov = undefined;

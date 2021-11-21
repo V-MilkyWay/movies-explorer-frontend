@@ -9,6 +9,10 @@
     grid-row-gap: 32px;
 }
 
+.moviesCardList__hidden {
+display: none;
+}
+
 @media screen and (min-width: 1280px) {
     .moviesCardList {
         grid-template-columns: repeat(3, 360px);

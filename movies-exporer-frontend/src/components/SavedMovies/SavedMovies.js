@@ -1,19 +1,28 @@
 import React from 'react';
 import Search from '../Search/Search';
+import Header from '../Header/Header';
+import Navigation from '../Navigation/Navigation';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import {savedMovies} from '../../utils/constans.js';
+import Footer from '../Footer/Footer';
 import './SavedMovies.css';
 
-function SavedMovies() {
-   
+function SavedMovies(props) {
+
     return (
-        <div className="savedMovies">
-            <Search />
-            <hr className="savedMovies__line"></hr>
-            <MoviesCardList buttonLike={false} movies={savedMovies} />
-            <button className="savedMovies__button savedMovies__button_hidden" type="button" >Ещё</button>
-            <span className="savedMovies__saveddevider"></span>
-        </div>
+        <>
+            <Navigation isOpen={props.isOpen}
+                handleClickCloseNavTab={props.handleClickCloseNavTab}
+                status={props.status} />
+            <Header />
+            <div className="savedMovies">
+                <Search setFiltText={props.setFiltText} filter={props.filter} handleClickSearch={props.searchSavedCards} handleClickFilterCheckbox={props.handleClickFilterCheckbox} />
+                <hr className="savedMovies__line"></hr>
+                <MoviesCardList daleteCard={props.handleClickDeleteMovie} buttonLike={false} showMore={props.showMore} status={(props.statMovies === true) ? 'moviesCardList' : 'moviesCardList__hidden'} movies={props.likedCards} />
+                <button className="savedMovies__button savedMovies__button_hidden" type="button" >Ещё</button>
+                <span className="savedMovies__saveddevider"></span>
+            </div>
+            <Footer />
+        </>
     )
 }
 

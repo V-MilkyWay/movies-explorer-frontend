@@ -83,6 +83,15 @@
     font-weight: 400;
     text-align: right;
 }
+.profile__text_error {
+    color: rgba(255, 48, 85, 1);
+}
+.profile__text_error:nth-child(4) {
+    color: rgba(255, 48, 85, 1);
+}
+.profile__text_error:nth-child(8) {
+    color: rgba(255, 48, 85, 1);
+}
 
 .profile__text_hidden {
     display: none;
@@ -175,8 +184,8 @@
 
 .profile__save_unactive {
     cursor: auto;
-    background: rgba(248, 248, 248, 1);
-    color: rgba(194, 194, 194, 1);
+    color: rgb(177, 166, 166);
+    background: rgb(84, 84, 85);
 }
 
 .profile__save_unactive:hover {
