@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo-auth.svg';
 import './Login.css';
 
 function Login(props) {
@@ -13,8 +12,8 @@ function Login(props) {
 
     function onChangeTagInputEmail(e) {
         setEmail(e.target.value);
-        !/\S+@\S+\.\S+/.test(email)? setErrMessage('Email введен неверно') : setErrMessage("");
-        !/\S+@\S+\.\S+/.test(email) ? setErrStatEmail(true) : setErrStatEmail(false);
+        !/\S+@\S+\.\S+/.test(e.target.value)? setErrMessage('Email введен неверно') : setErrMessage("");
+        !/\S+@\S+\.\S+/.test(e.target.value) ? setErrStatEmail(true) : setErrStatEmail(false);
     }
     function onChangeTagInputPass(e) {
         setPassword(e.target.value);
@@ -33,7 +32,7 @@ function Login(props) {
 
     return (
         <form id="login" name="login" className="login" noValidate>
-            <img className="login__logo" src={logo} alt="logo" />
+            <Link className="login__logo" to="/"></Link>
             <h2 className="login__welcome">Рады видеть!</h2>
             <p className="login__title">E-mail</p>
             <input id="login-input" value={email} onChange={ onChangeTagInputEmail} name="email" type="email" className={errStatEmail === false ? "login__input" : "login__input login__input_error"} placeholder="Email" required minLength="2" maxLength="40" />

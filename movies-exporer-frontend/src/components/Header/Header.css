@@ -5,6 +5,10 @@
     grid-template-areas: "logo linkMovies linkSavedMovies linkProfile navTab";
 }
 
+.header__hidden {
+    display: none;
+}
+
 .header__logo {
     margin: 0;
     display: flex;
@@ -102,15 +106,19 @@
         margin-left: 70px;
         margin-right: 70px;
     }
+
     .header__logo {
         margin-right: 44px;
     }
+
     .header__link {
         display: flex;
     }
+
     .header__button {
         display: none;
     }
+
     .header__link:nth-child(3) {
         margin-right: 730px;
     }
@@ -121,12 +129,15 @@
         margin-left: 30px;
         margin-right: 30px;
     }
+
     .header__logo {
         margin-right: 623px;
     }
+
     .header__link {
         display: none;
     }
+
     .header__button {
         display: flex;
     }
@@ -137,13 +148,16 @@
         margin-left: 14px;
         margin-right: 14px;
     }
+
     .header__logo {
         margin-right: 207px;
     }
+
     .header__link {
         display: none;
     }
+
     .header__button {
         display: flex;
     }
-  }
+}

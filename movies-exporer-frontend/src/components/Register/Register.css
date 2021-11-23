@@ -11,9 +11,17 @@
 
 .register__logo {
     margin: 0;
+    height: 38px;
+    width: 38px;
     margin-top: 70px;
     margin-bottom: 40px;
     grid-area: logo;
+    background: url('../../images/header-logo.svg');
+}
+
+.register__logo:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
 }
 
 .register__welcome {
