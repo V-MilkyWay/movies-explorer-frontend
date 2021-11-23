@@ -331,6 +331,7 @@ function App() {
 
   function signOut() {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('cards');
     setLoggedIn(false);
   };
 
