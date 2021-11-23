@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import logoMain from '../../images/header-logo.svg';
 import './HeaderPromo.css';
 
-function HeaderPromo() {
+function HeaderPromo(props) {
     return (
-        <div className="headerPromo">
+        <div className={props.statusHeader === false? "headerPromo" : "headerPromo__hidden" }>
             <img className="headerPromo__logo" src={logoMain} alt="Promo-logo" />
             <Link className="headerPromo__link-signup" to="/signup">
                 Регистрация

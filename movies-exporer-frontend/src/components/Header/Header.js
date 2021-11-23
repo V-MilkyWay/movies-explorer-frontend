@@ -5,7 +5,7 @@ import './Header.css';
 function Header(props) {
 
     return (
-        <div className="header">
+        <div className={props.statusHeader === true? "header" : "header__hidden"}>
             <Link className="header__logo" to="/"></Link>
             <Link className="header__link" to="/movies">
                 Фильмы

@@ -5,6 +5,10 @@
     background: rgb(7, 48, 66);
 }
 
+.headerPromo__hidden {
+    display: none;
+}
+
 .headerPromo__logo {
     margin: 0;
     margin-top: 18px;
@@ -59,6 +63,7 @@
     .headerPromo__logo {
         margin-left: 60px;
     }
+
     .headerPromo__link-signin {
         margin-right: 70px;
         margin-left: 30px;
@@ -69,6 +74,7 @@
     .headerPromo__logo {
         margin-left: 30px;
     }
+
     .headerPromo__link-signin {
         margin-right: 30px;
         margin-left: 30px;
@@ -79,6 +85,7 @@
     .headerPromo__logo {
         margin-left: 14px;
     }
+
     .headerPromo__link-signin {
         margin-right: 14px;
         margin-left: 14px;
@@ -86,6 +93,7 @@
         height: 26px;
         font-size: 10px;
     }
+
     .headerPromo__link-signup {
         font-size: 10px;
     }

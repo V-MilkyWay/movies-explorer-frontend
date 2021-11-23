@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo-auth.svg';
 import './Register.css';
 
 function Register(props) {
@@ -21,22 +20,23 @@ function Register(props) {
     }
     function onChangeTagInputEmail(e) {
         setEmail(e.target.value);
-        !/\S+@\S+\.\S+/.test(email)? setErrMessage('Email введен неверно') : setErrMessage("");
-        !/\S+@\S+\.\S+/.test(email) ? setErrStatEmail(true) : setErrStatEmail(false);
+        !/\S+@\S+\.\S+/.test(e.target.value) ? setErrMessage('Email введен неверно') : setErrMessage("");
+        !/\S+@\S+\.\S+/.test(e.target.value) ? setErrStatEmail(true) : setErrStatEmail(false);
     }
+
     function onChangeTagInputPass(e) {
         setPassword(e.target.value);
         password.length < 7 ? setErrMessage('Слишком короткий пароль, (меньше 8 символов)') : setErrMessage("");
         password.length < 7 ? setErrStatPassword(true) : setErrStatPassword(false)
     }
 
-    function handleRegisterClick(e){
-        e.preventDefault(); 
+    function handleRegisterClick(e) {
+        e.preventDefault();
         props.handleRegister(name, email, password)
         setErrMessage("Отправка...")
         setTimeout(() => {
             setErrMessage("Ошибка отправки, попробуйте другой Email")
-            setTimeout(() => {  
+            setTimeout(() => {
                 setErrMessage("")
             }, 2000);
         }, 2000);
@@ -44,7 +44,7 @@ function Register(props) {
 
     return (
         <form id="auth" name="auth" className="register" noValidate>
-            <img className="register__logo" src={logo} alt="Promo-logo" />
+            <Link className="register__logo" to="/"></Link>
             <h2 className="register__welcome">Добро пожаловать!</h2>
             <p className="register__title">Имя</p>
             <input id="name-input" value={name} onChange={(e) => onChangeTagInputName(e)} name="name" type="text" className={errStatName === false ? "register__input" : "register__input register__input_error"} placeholder="Имя" required minLength="2" maxLength="40" />
@@ -53,7 +53,7 @@ function Register(props) {
             <p className="register__title">Пароль</p>
             <input id="password-input" value={password} onChange={(e) => onChangeTagInputPass(e)} name="password" type="password" className={(errStatPassword === false) && (password.length > 7) ? "register__input" : "register__input register__input_error"} placeholder="Пароль" required minLength="2" maxLength="40" />
             <span className="register__input-error">{errMessage || props.statServer}</span>
-            <button onClick={(e) => ((errStatName === false) && (errStatEmail === false) && (errStatPassword === false) && (name !== "") && (email !== "") && (password !== "") && (password.length > 7)) ? handleRegisterClick(e) :  e.preventDefault()} type="submit" className={((errStatName === false) && (errStatEmail === false) && (errStatPassword === false) && (name !== "") && (email !== "") && (password !== "") && (password.length > 7)) ? "register__button-login" : "register__button-login register__button-login_unactive"}>Зарегистрироваться</button>
+            <button onClick={(e) => ((errStatName === false) && (errStatEmail === false) && (errStatPassword === false) && (name !== "") && (email !== "") && (password !== "") && (password.length > 7)) ? handleRegisterClick(e) : e.preventDefault()} type="submit" className={((errStatName === false) && (errStatEmail === false) && (errStatPassword === false) && (name !== "") && (email !== "") && (password !== "") && (password.length > 7)) ? "register__button-login" : "register__button-login register__button-login_unactive"}>Зарегистрироваться</button>
             <p className="register__text">Уже зарегистрировались?</p>
             <Link className="register__link" to="/signin"> Войти</Link>
         </form>

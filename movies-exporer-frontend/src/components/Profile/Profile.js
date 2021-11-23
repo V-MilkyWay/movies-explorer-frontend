@@ -39,7 +39,7 @@ function Profile(props) {
     return (
         <>
         <Navigation handleClickCloseNavTab={props.handleClickCloseNavTab} status={props.status} />
-        <Header />
+        <Header statusHeader={props.loggedIn} />
         <form className="profile">
             <h2 className="profile__title">Привет, {currentUser.name}!</h2>
             <p className="profile__text">Имя</p>
@@ -50,7 +50,7 @@ function Profile(props) {
             <p className={props.isRedact === true ? "profile__text_hidden" : "profile__text"}>{currentUser.email}</p>
             <input onChange={(e) => onChangeTagInputEmail(e)} className={props.isRedact === false ? "profile__text_hidden" : (errStatEmail === false ? "profile__text" : "profile__text profile__text_error")} id="email-input" value={email} name="email" type="E-mail" placeholder="E-mail" required minLength="2" maxLength="50" />
             <button type="button" className={props.isRedact === true ? "profile__redact_hidden" : "profile__redact"} onClick={handleRedactClick}>Редактировать</button>
-            <Link onClick={props.signOut} className={props.isRedact === true ? "profile__exit_hidden" : "profile__exit"} to='signin'>Выйти из аккаунта</Link>
+            <Link onClick={props.signOut} className={props.isRedact === true ? "profile__exit_hidden" : "profile__exit"} to='/'>Выйти из аккаунта</Link>
             <span className={props.isRedact === false ? "profile__error_hidden" : "profile__error"}>{errMessage || props.statServer}</span>
             <button onClick={(e) => ((errStatName === false) && (errStatEmail === false) && ((name !== currentUser.name) || (email !== currentUser.email)) && (name.length > 1)) ? handleClickUpdateUser(e) : e.preventDefault()} type="submit" className={props.isRedact === false ? "profile__save_hidden" : ((errStatName === false) && (errStatEmail === false) && ((name !== currentUser.name) || (email !== currentUser.email)) && (name.length > 1)) ? "profile__save" : "profile__save profile__save_unactive"}>Сохранить</button>
         </form>
