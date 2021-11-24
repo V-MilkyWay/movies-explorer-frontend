@@ -1,5 +1,4 @@
 export const BASE_URL = 'https://api.diploma.nomoredomains.club';
-//const BASE_URL = 'https://api.diploma.nomoredomains.club'
 // const BASE_URL = 'http://localhost:3001'; 
 
 export const register = (name, email, password) => { 
@@ -58,4 +57,4 @@ export const getContent = (token) => {
     } 
   }) 
   .then(res => res.json()) 
-}  
+}
