@@ -25,7 +25,6 @@ function App() {
   const [statErrProfile, setErrProfile] = React.useState('');
   const [numPlus, setNumPlus] = React.useState(3);
   const [showMore, setShowMore] = React.useState(12);
-  const [numCards, setNumCards] = React.useState(15);
   const [filterSearch, setFilterSearch] = React.useState(false);
   const [filter, setFilter] = React.useState(false);
   const [status, setStatus] = React.useState(false);
@@ -39,10 +38,8 @@ function App() {
   const [deleted, setDeleted] = React.useState(false);
   const history = useHistory();
 
-  let num = numCards;
-
   const updateSavedCardList = React.useCallback(() => {
-
+    deleted === true ? setDeleted(false) : setDeleted(false)
     let result = getLocalStorage().map(card => getLocalStorageLikedCards().find(({ movieId }) => movieId === card.id.toString()) || card);
     return result
   }, [deleted]);
@@ -50,6 +47,23 @@ function App() {
   React.useEffect(() => {
     adaptivContent();
   }, []);
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      function getUserInfo() {
+        api.initialUsers()
+          .then((result) => {
+            setCurrentUser(
+              result.data
+            );
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+      getUserInfo();
+    }
+  }, [loggedIn]);
 
   React.useEffect(() => {
     window.addEventListener(`resize`, event => {
@@ -73,9 +87,12 @@ function App() {
           if (filteredLikedCards.length < 1) {
             setStatMovies(false);
             setStatButton(false)
+            setStatResult(true);
+            setMessage('Ничего не найдено');
             return filteredLikedCards;
           } else {
             setStatMovies(true);
+            setStatResult(false);
             setStatButton(false);
             return filteredLikedCards;
           }
@@ -88,9 +105,12 @@ function App() {
           filteredLikedCards = getLocalStorageLikedCards().filter((c) => c.duration < 40).filter((c) => regular.test(c.nameRU));
           if (filteredLikedCards.length < 1) {
             setStatMovies(false);
+            setStatResult(true);
+            setMessage('Ничего не найдено');
             setStatButton(false)
             return filteredLikedCards;
           } else {
+            setStatResult(false);
             setStatMovies(true);
             setStatButton(false);
             return filteredLikedCards;
@@ -101,7 +121,9 @@ function App() {
     function initialSavedCards() {
       api.initCardsFromServer()
         .then((result) => {
-          localStorage.setItem("likeCards", JSON.stringify([...result.data]))
+          if (typeof currentUser._id !== 'undefined') {
+            localStorage.setItem("likeCards", JSON.stringify([...result.data.filter((c) => c.owner === currentUser._id)]))
+          }
         })
         .then(() => setLikedCards(filterLikedMuvies()))
         .catch((err) => {
@@ -109,24 +131,7 @@ function App() {
         })
     }
     initialSavedCards();
-  }, [likedCards, savedCards, filter, filterSearch, filtText]);
-
-  React.useEffect(() => {
-    if (loggedIn) {
-      function getUserInfo() {
-        api.initialUsers()
-          .then((result) => {
-            setCurrentUser(
-              result.data
-            );
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      }
-      getUserInfo();
-    }
-  }, [loggedIn]);
+  }, [filter, filterSearch, filtText, currentUser, deleted]);
 
   React.useEffect(() => {
     function tokenCheck() {
@@ -163,15 +168,12 @@ function App() {
     let width = window.innerWidth;
     if (width >= 1280) {
       setShowMore(12);
-      setNumCards(15);
       setNumPlus(3);
     } else if ((width >= 768) && (width < 1280)) {
       setShowMore(8);
-      setNumCards(10);
       setNumPlus(2);
     } else if ((width >= 320) && (width < 768)) {
       setShowMore(5);
-      setNumCards(10);
       setNumPlus(5);
     }
   }
@@ -197,7 +199,7 @@ function App() {
           setStatResult(false);
           localStorage.setItem("cards", JSON.stringify([...result]));
         }).then(() => {
-          let movies = getLocalStorage().filter((c) => regular.test(c.description));
+          let movies = getLocalStorage().filter((c) => regular.test(c.nameRU));
           if (movies.length < 1) {
             setStatResult(true);
             setStatMovies(false);
@@ -217,7 +219,7 @@ function App() {
           console.log(err)
         })
     } else {
-      let movies = getLocalStorage().filter((c) => regular.test(c.description));
+      let movies = getLocalStorage().filter((c) => regular.test(c.nameRU));
       if (movies.length < 1) {
         setStatResult(true);
         setMessage('Ничего не найдено');
@@ -274,9 +276,10 @@ function App() {
     setRedactProfile(true)
   };
 
-  function handleClickShowMore() {
+  function handleClickShowMore(e) {
+    e.preventDefault();
+    let num = showMore + numPlus;
     setShowMore(num);
-    setNumCards(showMore + numPlus);
   }
 
   const handleClickFilterCheckbox = () => {
@@ -293,15 +296,12 @@ function App() {
     return card !== null ? JSON.parse(card) : [];
   };
 
-  
+
   const handleRegister = (name, email, password) => {
     Auth.register(name, email, password)
       .then((res) => {
         if (res) {
-          setStatServer('');
-          setTimeout(() => {
-            history.push('/signin');;
-          }, 1000);
+          handleLogin(email, password)
         }
       }).catch((err) => {
         setStatServer(err.message);
@@ -331,7 +331,6 @@ function App() {
 
   function signOut() {
     localStorage.removeItem('jwt');
-    localStorage.removeItem('cards');
     setLoggedIn(false);
   };
 
@@ -393,8 +392,10 @@ function App() {
             path="/saved-movies"
             status={'saved-movies'}
             filter={filter}
-            statMovies={statMovies}
+            message={message}
             loggedIn={loggedIn}
+            statResult={statResult}
+            statMovies={statMovies}
             likedCards={likedCards}
             component={SavedMovies}
             setFiltText={setFiltText}
