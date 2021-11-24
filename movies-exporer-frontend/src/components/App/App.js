@@ -358,7 +358,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Navigation isOpen={status} handleClickCloseNavTab={closeNav} status={'main'} />
-            <Main />
+            <Main statusHeader={loggedIn} />
             <Footer />
           </Route>
           <Route path="/signup">
