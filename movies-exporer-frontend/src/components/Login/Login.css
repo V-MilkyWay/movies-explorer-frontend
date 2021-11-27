@@ -12,6 +12,14 @@
     margin: 0;
     margin-bottom: 40px;
     grid-area: logo;
+    height: 38px;
+    width: 38px;
+    background: url('../../images/header-logo.svg');
+}
+
+.login__logo:hover {
+    opacity: 0.5;
+    transition: linear 0.5s;
 }
 
 .login__welcome {

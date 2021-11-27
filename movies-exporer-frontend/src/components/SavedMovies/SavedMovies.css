@@ -4,6 +4,24 @@
     grid-template-areas: "input" "line" "movies" "button";
 }
 
+.savedMovies__resilt-title {
+    display: flex;
+    grid-area: movies;
+    justify-self: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+}
+
+.savedMovies__resilt-title__hidden {
+    display: none;
+}
+
 .savedMovies__line {
     margin: 0;
     margin-bottom: 10px;
