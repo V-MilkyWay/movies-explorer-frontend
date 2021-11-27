@@ -58,15 +58,6 @@ function App() {
         moviesApi.initCardsFromServer()
           .then((result) => {
             localStorage.setItem("cards", JSON.stringify([...result]));
-            let saved = getLocalStorage().map(card => {
-              if (getLocalStorageLikedCards().find(({ movieId }) => movieId === card.id.toString())) {
-                card.isLiked = true
-                return card;
-              } else {
-                return card;
-              };
-            })
-            setSavedCards(saved)
           })
           .catch((err) => {
             setMessage('Во время обращения к серверу произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте обновить ещё раз');
