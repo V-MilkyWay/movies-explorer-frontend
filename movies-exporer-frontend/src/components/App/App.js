@@ -81,7 +81,9 @@ function App() {
   React.useEffect(() => {
     let regular = new RegExp(`${filtText}`, 'i');
     function filterLikedMuvies() {
+      
       let filteredLikedCards;
+
       setStatResult(false);
       if (filter === false) {
         if (filterSearch === false) {
