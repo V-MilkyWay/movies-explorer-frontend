@@ -351,6 +351,8 @@ function App() {
     localStorage.removeItem('jwt');
     localStorage.removeItem('likeCards');
     localStorage.removeItem('cards');
+    setSavedCards([])
+    setLikedCards([])
     setLoggedIn(false);
   };
 
