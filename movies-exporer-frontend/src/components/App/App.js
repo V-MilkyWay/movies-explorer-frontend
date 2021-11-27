@@ -25,7 +25,6 @@ function App() {
   const [statErrProfile, setErrProfile] = React.useState('');
   const [numPlus, setNumPlus] = React.useState(3);
   const [showMore, setShowMore] = React.useState(12);
-  const [filterSearch, setFilterSearch] = React.useState(false);
   const [filter, setFilter] = React.useState(false);
   const [status, setStatus] = React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -33,16 +32,9 @@ function App() {
   const [statMovies, setStatMovies] = React.useState(false);
   const [statButton, setStatButton] = React.useState(false);
   const [statPreload, setStatPreload] = React.useState(false);
-  const [loadedMovies, setLoadedMovies] = React.useState(false);
+  const [filterSearch, setFilterSearch] = React.useState(false);
   const [redactProfile, setRedactProfile] = React.useState(false);
-  const [deleted, setDeleted] = React.useState(false);
   const history = useHistory();
-
-  const updateSavedCardList = React.useCallback(() => {
-    deleted === true ? setDeleted(false) : setDeleted(false)
-    let result = getLocalStorage().map(card => getLocalStorageLikedCards().find(({ movieId }) => movieId === card.id.toString()) || card);
-    return result
-  }, [deleted]);
 
   React.useEffect(() => {
     adaptivContent();
@@ -61,6 +53,27 @@ function App() {
             console.log(err)
           })
       }
+      
+      function loadNewMoviesFromServis() {
+        moviesApi.initCardsFromServer()
+          .then((result) => {
+            localStorage.setItem("cards", JSON.stringify([...result]));
+            let saved = getLocalStorage().map(card => {
+              if (getLocalStorageLikedCards().find(({ movieId }) => movieId === card.id.toString())) {
+                card.isLiked = true
+                return card;
+              } else {
+                return card;
+              };
+            })
+            setSavedCards(saved)
+          })
+          .catch((err) => {
+            setMessage('Во время обращения к серверу произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте обновить ещё раз');
+            console.log(err)
+          })
+      }
+      loadNewMoviesFromServis();
       getUserInfo();
     }
   }, [loggedIn]);
@@ -78,6 +91,7 @@ function App() {
     let regular = new RegExp(`${filtText}`, 'i');
     function filterLikedMuvies() {
       let filteredLikedCards;
+      setStatResult(false);
       if (filter === false) {
         if (filterSearch === false) {
           filteredLikedCards = getLocalStorageLikedCards();
@@ -131,7 +145,7 @@ function App() {
         })
     }
     initialSavedCards();
-  }, [filter, filterSearch, filtText, currentUser, deleted]);
+  }, [filter, filterSearch, currentUser]);
 
   React.useEffect(() => {
     function tokenCheck() {
@@ -140,7 +154,6 @@ function App() {
         Auth.getContent(jwt).then((res) => {
           if (res) {
             setLoggedIn(true);
-            history.push('/movies');
           }
         }).catch((err) => {
           console.log(err)
@@ -148,21 +161,32 @@ function App() {
       }
     }
     tokenCheck();
-  }, [history]);
+  }, []);
+
+  const filterMuvies = React.useCallback((filtText) => {
+    let filteredCards;
+    setStatResult(false);
+    let regular = new RegExp(`${filtText}`, 'i');
+    if (filter === false) {
+      filteredCards = getLocalStorage().filter((c) => regular.test(c.nameRU));
+      return filteredCards;
+    } else {
+      filteredCards = getLocalStorage().filter((c) => c.duration < 40).filter((c) => regular.test(c.nameRU));
+      return filteredCards;
+    }
+  }, [filter]);
 
   React.useEffect(() => {
-    function filterMuvies() {
-      let filteredCards;
-      if (filter === false) {
-        filteredCards = updateSavedCardList();
-        return filteredCards;
+    let saved = filterMuvies(filtText).map(card => {
+      if (getLocalStorageLikedCards().find(({ movieId }) => movieId === card.id.toString())) {
+        card.isLiked = true
+        return card;
       } else {
-        filteredCards = updateSavedCardList().filter((c) => c.duration < 40);
-        return filteredCards;
-      }
-    }
-    setSavedCards(filterMuvies())
-  }, [filter, updateSavedCardList]);
+        return card;
+      };
+    })
+    setSavedCards(saved)
+  }, [filter, filterMuvies]);
 
   const adaptivContent = () => {
     let width = window.innerWidth;
@@ -185,68 +209,64 @@ function App() {
 
   function initialCards() {
     let regular = new RegExp(`${filtText}`, 'i');
+    let movies = filterMuvies(filtText).filter((c) => regular.test(c.nameRU)).map(card => {
+      if (getLocalStorageLikedCards().find(({ movieId }) => movieId === card.id.toString())) {
+        card.isLiked = true
+        return card;
+      } else {
+        return card;
+      };
+    })
     setFilterSearch(false)
     setStatPreload(true);
     setStatMovies(false);
-    setStatButton(false)
-    if (loadedMovies === false) {
-      moviesApi.initCardsFromServer()
-        .then((result) => {
-          setStatPreload(false);
-          setStatMovies(true);
-          setStatButton(false)
-          setLoadedMovies(true)
-          setStatResult(false);
-          localStorage.setItem("cards", JSON.stringify([...result]));
-        }).then(() => {
-          let movies = getLocalStorage().filter((c) => regular.test(c.nameRU));
-          if (movies.length < 1) {
-            setStatResult(true);
-            setStatMovies(false);
-            setStatButton(false)
-            setMessage('Ничего не найдено');
-          } else {
-            setStatMovies(true);
-            setStatResult(false);
-            setSavedCards(movies);
-          }
-          setStatPreload(false);
-        })
-        .catch((err) => {
-          setStatPreload(false);
-          setStatResult(true);
-          setMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-          console.log(err)
-        })
+    setStatButton(false);
+    setTimeout(() => {
+    if (movies.length < 1) {
+      setStatResult(true);
+      setMessage('Ничего не найдено');
     } else {
-      let movies = getLocalStorage().filter((c) => regular.test(c.nameRU));
-      if (movies.length < 1) {
-        setStatResult(true);
-        setMessage('Ничего не найдено');
-      } else {
-        setStatResult(false);
-        setSavedCards(movies);
-      }
-      setStatPreload(false);
+      setStatResult(false);
+      setSavedCards(movies);
     }
+    setStatPreload(false);
+  }, 2000);
   }
 
   const handleClickSaveMovie = (data) => {
     api.loadingNewCardOnServer(data).then((newCard) => {
+      newCard.isLiked = true;
       setLikedCards([...likedCards, newCard]);
-      setDeleted(true)
-    }).then(() => setDeleted(false)).catch((err) => {
-      console.log(err);
-    });
+      let saved = savedCards.map(card => {
+        if (newCard.movieId === card.id.toString()) {
+          card.isLiked = true
+          return card
+        } else {
+          return card;
+        };
+      })
+      setSavedCards(saved)
+    })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   const handleClickDeleteMovie = (card) => {
-    let deleteCard = likedCards.filter((c) => c._id === card._id.toString())
+    let deleteCard = likedCards.filter((c) => c.movieId === card.id.toString())
     api.deleteCardFromServer(deleteCard[0]._id)
       .then(() => {
-        setLikedCards((state) => state.filter((c) => c._id !== deleteCard[0]._id));
-        setDeleted(true);
-      }).then(() => setDeleted(false))
+        setLikedCards((state) => state.filter((c) => c.movieId !== deleteCard[0].movieId));
+        let saved = savedCards.map(c => {
+          if (card.id.toString() === c.id.toString()) {
+            c.isLiked = false
+            return c;
+          } else {
+            return c;
+          };
+        })
+        setSavedCards(saved)
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -257,9 +277,16 @@ function App() {
     api.deleteCardFromServer(deleteCard[0]._id)
       .then(() => {
         setLikedCards((state) => state.filter((c) => c._id !== deleteCard[0]._id));
-        setDeleted(true);
+        let saved = savedCards.map(c => {
+          if (card.movieId === c.id.toString()) {
+            c.isLiked = false
+            return c
+          } else {
+            return c;
+          };
+        })
+        setSavedCards(saved)
       })
-      .then(() => setDeleted(false))
       .catch((err) => {
         console.log(err);
       });
@@ -331,6 +358,7 @@ function App() {
 
   function signOut() {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('likeCards');
     localStorage.removeItem('cards');
     setLoggedIn(false);
   };
@@ -338,7 +366,6 @@ function App() {
   function handleUpdateUser(data) {
     api.loadingUserInfoOnServer({ name: data.name, email: data.email }).then((result) => {
       if (result.data) {
-        console.log(result.data)
         setCurrentUser(result.data);
         setErrProfile('Данные успешно изменены!');
         setTimeout(() => {
@@ -370,7 +397,6 @@ function App() {
           <ProtectedRoute
             path="/movies"
             status={'movies'}
-            setFiltText={setFiltText}
             filter={filter}
             isOpen={status}
             message={message}
@@ -383,7 +409,8 @@ function App() {
             statPreload={statPreload}
             openNav={openNav}
             component={Movies}
-            initialCards={initialCards}
+            setFiltText={setFiltText}
+            initialCards={initialCards}  
             handleClickCloseNavTab={closeNav}
             handleClickShowMore={handleClickShowMore}
             handleClickSaveMovie={handleClickSaveMovie}
