@@ -98,7 +98,7 @@ class Api {
 
 const api = new Api({
     baseUrl: 'https://api.diploma.nomoredomains.club',
-    //'https://api.your.mesto.nomoredomains.monster',
+
     credentials: 'include',
     headers: {
         'Content-Type': 'application/json'
