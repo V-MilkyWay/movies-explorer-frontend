@@ -97,7 +97,8 @@ class Api {
 
 
 const api = new Api({
-    baseUrl: 'http://localhost:3001', 
+    baseUrl: 'https://api.your.mesto.nomoredomains.monster',
+    // 'http://localhost:3001', 
     //'https://api.your.mesto.nomoredomains.monster',
     credentials: 'include',
     headers: {
