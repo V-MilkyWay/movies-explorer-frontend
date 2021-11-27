@@ -53,6 +53,7 @@ function App() {
             console.log(err)
           })
       }
+      
       function loadNewMoviesFromServis() {
         moviesApi.initCardsFromServer()
           .then((result) => {
